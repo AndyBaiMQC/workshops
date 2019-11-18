@@ -9,6 +9,7 @@ class Engine {
     this.enemies = this.enemies.filter(enemy => { 
       return !enemy.destroyed 
     }) 
+
     while (this.enemies.length < MAX_ENEMIES) { 
       let spot = nextEnemySpot(this.enemies) 
       this.enemies.push(new Enemy(this.root, spot)) 
@@ -19,8 +20,14 @@ class Engine {
     } 
     setTimeout(this.gameLoop, 20) 
   } 
-  isPlayerDead = () => { 
-    return false 
+  isPlayerDead = () => {
+    let hitTop = false
+    this.enemies.forEach(enemy => { 
+      if((this.player.y >= enemy.y && this.player.y <= enemy.y+ENEMY_HEIGHT) && (this.player.x >= enemy.x && this.player.x <= enemy.x+ENEMY_WIDTH)){
+        hitTop = true
+      }
+    })
+    return hitTop
   } 
   constructor(theRoot) { 
     this.root = theRoot 

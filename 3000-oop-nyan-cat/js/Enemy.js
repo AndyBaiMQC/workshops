@@ -1,7 +1,12 @@
 class Enemy { 
         update(timeDiff) { 
                 this.y = this.y + timeDiff * this.speed 
+                this.x = this.x + timeDiff * this.speedX
                 this.domElement.style.top = this.y + "px" 
+                this.domElement.style.left = this.x + "px"
+                if (this.x > GAME_WIDTH) {
+                        this.x = -this.x
+                }
                 if (this.y > GAME_HEIGHT) { 
                         this.root.removeChild(this.domElement) 
                         this.destroyed = true 
@@ -21,5 +26,6 @@ class Enemy {
                 this.domElement.style.zIndex = 5 
                 theRoot.appendChild(this.domElement) 
                 this.speed = Math.random() / 2 + 0.25 
+                this.speedX = Math.random() / 3
         } 
 } 
