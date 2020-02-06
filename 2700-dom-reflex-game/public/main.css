@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+
+.alert {
+  background: red;
+  color: #fff;
+  font-size: 3rem;
+}
