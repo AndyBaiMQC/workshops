@@ -11,7 +11,7 @@ reloadMagic(app);
 app.use('/', express.static('build'));
 app.use('/uploads', express.static('uploads'));
 let dbo = undefined;
-let url = 'YOUR_MONGODB_URL';
+let url = 'mongodb+srv://bob:bobsue@cluster0-g8qr6.gcp.mongodb.net/testmongodb+srv://bob:bobsue@cluster0-g8qr6.gcp.mongodb.net/test?retryWrites=true&w=majority';
 MongoClient.connect(url, { useUnifiedTopology: true })
   .then(client => {
     dbo = client.db('media-board');
